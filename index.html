@@ -44,7 +44,8 @@
   nav a{text-decoration:none; color:var(--muted); transition:color .15s;}
   nav a:hover{color:var(--ink);}
   .navlinks{display:flex; align-items:center;}
-  .theme-btn{border:1px solid var(--line); background:var(--surface); width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; margin-left:20px; font-size:1rem;}
+  .icon-btn{border:1px solid var(--line); background:var(--surface); height:36px; border-radius:18px; display:flex; align-items:center; justify-content:center; cursor:pointer; margin-left:12px; font-size:0.85rem; font-weight:600; color:var(--ink); padding:0 14px;}
+  .theme-btn{width:36px; padding:0; font-size:1rem;}
   @media (max-width:680px){ .navlinks ul{display:none;} }
 
   header.hero{padding:80px 0 60px; position:relative; overflow:hidden;}
@@ -52,7 +53,7 @@
   .hero-grid{display:grid; grid-template-columns:1fr auto; gap:48px; align-items:start;}
   .kicker{color:var(--accent); font-size:0.92rem; font-weight:600; margin-bottom:16px; display:flex; align-items:center; gap:9px;}
   .kicker::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px var(--accent-soft);}
-  .hero h1{font-size:clamp(2.1rem,5vw,3.3rem); line-height:1.1; max-width:15ch;}
+  .hero h1{font-size:clamp(2.1rem,5vw,3.3rem); line-height:1.1; max-width:16ch;}
   .hero .role{color:var(--muted); font-size:1.1rem; margin-top:16px; max-width:52ch;}
   .badges{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px;}
   .badge{font-size:0.82rem; font-weight:500; padding:7px 14px; border-radius:20px; background:var(--surface2); border:1px solid var(--line); color:var(--ink);}
@@ -62,7 +63,7 @@
   .btn.primary:hover{transform:translateY(-2px); box-shadow:0 14px 30px -10px rgba(11,110,134,0.45);}
   .btn.ghost{background:var(--surface); color:var(--ink);}
   .btn.ghost:hover{border-color:var(--accent); color:var(--accent); transform:translateY(-2px);}
-  .btn:focus-visible, a:focus-visible, .theme-btn:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+  .btn:focus-visible, a:focus-visible, .icon-btn:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
   .portrait-wrap{width:260px; height:260px; border-radius:50%; padding:6px; background:linear-gradient(155deg, var(--accent), var(--accent-deep)); flex-shrink:0; margin-top:-18px;}
   .portrait-wrap img{width:100%; height:100%; object-fit:cover; border-radius:50%; display:block;}
   @media (max-width:680px){ .hero-grid{grid-template-columns:1fr;} .portrait-wrap{width:160px; height:160px; order:-1; margin-top:0;} }
@@ -139,13 +140,14 @@
     </div>
     <div class="navlinks">
       <ul>
-        <li><a href="#apropos">À propos</a></li>
-        <li><a href="#competences">Compétences</a></li>
-        <li><a href="#projets">Projets</a></li>
-        <li><a href="#experience">Expérience</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#apropos" data-i18n="nav_about">À propos</a></li>
+        <li><a href="#competences" data-i18n="nav_skills">Compétences</a></li>
+        <li><a href="#projets" data-i18n="nav_projects">Projets</a></li>
+        <li><a href="#experience" data-i18n="nav_experience">Expérience</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
       </ul>
-      <button class="theme-btn" id="themeToggle" aria-label="Changer de thème">🌙</button>
+      <button class="icon-btn" id="langToggle" aria-label="Switch language">EN</button>
+      <button class="icon-btn theme-btn" id="themeToggle" aria-label="Changer de thème">🌙</button>
     </div>
   </div>
 </nav>
@@ -154,16 +156,16 @@
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <div class="kicker">Ingénieure Informatique — Agadir, Maroc</div>
-        <h1>Du capteur à l'interface, je construis des systèmes complets.</h1>
-        <p class="role">Systèmes embarqués, IoT industriel, développement full stack et IA — j'aime les projets qui traversent toute la chaîne technique, du microcontrôleur au tableau de bord.</p>
+        <div class="kicker" data-i18n="kicker">Ingénieure Informatique — Agadir, Maroc</div>
+        <h1 data-i18n="hero_title">Du capteur à l'interface, je construis des systèmes complets.</h1>
+        <p class="role" data-i18n="hero_role">Systèmes embarqués, IoT industriel, développement full stack et IA — j'aime les projets qui traversent toute la chaîne technique, du microcontrôleur au tableau de bord.</p>
         <div class="badges">
-          <span class="badge">IoT</span><span class="badge">Systèmes embarqués</span><span class="badge">Intelligence Artificielle</span><span class="badge">Full Stack</span>
+          <span class="badge" data-i18n="badge_iot">IoT</span><span class="badge" data-i18n="badge_embedded">Systèmes embarqués</span><span class="badge" data-i18n="badge_ai">Intelligence Artificielle</span><span class="badge" data-i18n="badge_fullstack">Full Stack</span>
         </div>
         <div class="cta-row">
-          <a class="btn primary" href="#projets">Voir les projets</a>
-          <a class="btn ghost" href="CV_Asma_AMLAL.pdf" download="CV_Asma_AMLAL.pdf">Télécharger mon CV</a>
-          <a class="btn ghost" href="https://mail.google.com/mail/?view=cm&fs=1&to=assmaamlal141@gmail.com" target="_blank" rel="noopener">Me contacter</a>
+          <a class="btn primary" href="#projets" data-i18n="btn_view_projects">Voir les projets</a>
+          <a class="btn ghost" href="CV_Asma_AMLAL.pdf" download="CV_Asma_AMLAL.pdf" data-i18n="btn_download_cv">Télécharger mon CV</a>
+          <a class="btn ghost" href="https://mail.google.com/mail/?view=cm&fs=1&to=assmaamlal141@gmail.com" target="_blank" rel="noopener" data-i18n="btn_contact">Me contacter</a>
         </div>
       </div>
       <div class="portrait-wrap">
@@ -175,84 +177,84 @@
 
 <section id="apropos">
   <div class="wrap reveal">
-    <div class="section-head"><div class="eyebrow">À propos</div><h2>Une ingénieure qui aime le bout en bout</h2></div>
-    <div class="about"><p>Diplômée d'un Master d'Excellence en Ingénierie Informatique et Systèmes Embarqués, j'ai une expertise polyvalente : matériel (capteurs, microcontrôleurs, protocoles industriels), développement logiciel (full stack, API REST, bases de données) et analyse de données (IA, Machine Learning, Big Data, tableaux de bord décisionnels). Mes stages et projets, du site e-commerce sous Django à une architecture IIoT complète déployée en production, m'ont donné une expérience concrète de bout en bout. Rigoureuse, autonome et curieuse, je veux mettre cette polyvalence au service de projets innovants en IoT, IA et systèmes industriels.</p></div>
+    <div class="section-head"><div class="eyebrow" data-i18n="about_eyebrow">À propos</div><h2 data-i18n="about_title">Une ingénieure qui aime le bout en bout</h2></div>
+    <div class="about"><p data-i18n="about_text">Diplômée d'un Master d'Excellence en Ingénierie Informatique et Systèmes Embarqués, j'ai une expertise polyvalente : matériel (capteurs, microcontrôleurs, protocoles industriels), développement logiciel (full stack, API REST, bases de données) et analyse de données (IA, Machine Learning, Big Data, tableaux de bord décisionnels). Mes stages et projets, du site e-commerce sous Django à une architecture IIoT complète déployée en production, m'ont donné une expérience concrète de bout en bout. Rigoureuse, autonome et curieuse, je veux mettre cette polyvalence au service de projets innovants en IoT, IA et systèmes industriels.</p></div>
     <div class="domain-grid" style="margin-top:36px;">
-      <div class="domain-card"><div class="ico">📡</div><h3>IoT</h3><p>Capteurs, acquisition et transmission de données terrain</p></div>
-      <div class="domain-card"><div class="ico">🔧</div><h3>Embarqué</h3><p>ESP32, Arduino, protocoles industriels temps réel</p></div>
-      <div class="domain-card"><div class="ico">🤖</div><h3>IA & Data</h3><p>Machine Learning, Big Data, tableaux de bord décisionnels</p></div>
-      <div class="domain-card"><div class="ico">💻</div><h3>Full Stack</h3><p>API REST, bases de données, interfaces web complètes</p></div>
+      <div class="domain-card"><div class="ico">📡</div><h3 data-i18n="domain_iot_t">IoT</h3><p data-i18n="domain_iot_d">Capteurs, acquisition et transmission de données terrain</p></div>
+      <div class="domain-card"><div class="ico">🔧</div><h3 data-i18n="domain_emb_t">Embarqué</h3><p data-i18n="domain_emb_d">ESP32, Arduino, protocoles industriels temps réel</p></div>
+      <div class="domain-card"><div class="ico">🤖</div><h3 data-i18n="domain_ai_t">IA & Data</h3><p data-i18n="domain_ai_d">Machine Learning, Big Data, tableaux de bord décisionnels</p></div>
+      <div class="domain-card"><div class="ico">💻</div><h3 data-i18n="domain_fs_t">Full Stack</h3><p data-i18n="domain_fs_d">API REST, bases de données, interfaces web complètes</p></div>
     </div>
   </div>
 </section>
 
 <section id="competences">
   <div class="wrap reveal">
-    <div class="section-head"><div class="eyebrow">Compétences</div><h2>Boîte à outils technique</h2></div>
+    <div class="section-head"><div class="eyebrow" data-i18n="skills_eyebrow">Compétences</div><h2 data-i18n="skills_title">Boîte à outils technique</h2></div>
     <div class="skill-groups">
-      <div><h3>Langages</h3><div class="chips"><span class="chip">Python</span><span class="chip">Java</span><span class="chip">C</span><span class="chip">C++</span><span class="chip">PHP</span><span class="chip">VHDL</span><span class="chip">SQL</span></div></div>
-      <div><h3>Développement web</h3><div class="chips"><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Node.js</span><span class="chip">Django</span><span class="chip">FastAPI</span><span class="chip">Odoo</span></div></div>
-      <div><h3>Embarqué & protocoles</h3><div class="chips"><span class="chip">Arduino</span><span class="chip">ESP32-S3</span><span class="chip">LVGL</span><span class="chip">Modbus RTU</span><span class="chip">RS485</span><span class="chip">MQTT</span></div></div>
-      <div><h3>Data & IA</h3><div class="chips"><span class="chip">Machine Learning</span><span class="chip">OpenCV</span><span class="chip">Hadoop</span><span class="chip">Talend</span><span class="chip">Power BI</span><span class="chip">InfluxDB</span></div></div>
-      <div><h3>DevOps & outils</h3><div class="chips"><span class="chip">Docker</span><span class="chip">Nginx</span><span class="chip">VPS</span><span class="chip">Ubuntu</span><span class="chip">Git</span><span class="chip">MATLAB</span></div></div>
+      <div><h3 data-i18n="grp_lang">Langages</h3><div class="chips"><span class="chip">Python</span><span class="chip">Java</span><span class="chip">C</span><span class="chip">C++</span><span class="chip">PHP</span><span class="chip">VHDL</span><span class="chip">SQL</span></div></div>
+      <div><h3 data-i18n="grp_web">Développement web</h3><div class="chips"><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Node.js</span><span class="chip">Django</span><span class="chip">FastAPI</span><span class="chip">Odoo</span></div></div>
+      <div><h3 data-i18n="grp_emb">Embarqué & protocoles</h3><div class="chips"><span class="chip">Arduino</span><span class="chip">ESP32-S3</span><span class="chip">LVGL</span><span class="chip">Modbus RTU</span><span class="chip">RS485</span><span class="chip">MQTT</span></div></div>
+      <div><h3 data-i18n="grp_data">Data & IA</h3><div class="chips"><span class="chip">Machine Learning</span><span class="chip">OpenCV</span><span class="chip">Hadoop</span><span class="chip">Talend</span><span class="chip">Power BI</span><span class="chip">InfluxDB</span></div></div>
+      <div><h3 data-i18n="grp_devops">DevOps & outils</h3><div class="chips"><span class="chip">Docker</span><span class="chip">Nginx</span><span class="chip">VPS</span><span class="chip">Ubuntu</span><span class="chip">Git</span><span class="chip">MATLAB</span></div></div>
     </div>
   </div>
 </section>
 
 <section id="projets">
   <div class="wrap reveal">
-    <div class="section-head"><div class="eyebrow">Projets</div><h2>Réalisations</h2></div>
+    <div class="section-head"><div class="eyebrow" data-i18n="projects_eyebrow">Projets</div><h2 data-i18n="projects_title">Réalisations</h2></div>
 
     <div class="featured">
-      <div class="tag">PROJET DE FIN D'ÉTUDES · FÉV — JUIN 2026</div>
-      <h3>Supervision énergétique IIoT d'un site industriel</h3>
-      <div class="sub">SOUSSCAMP & Laboratoire LASIME — Agadir</div>
-      <p>Conception et déploiement d'une architecture IIoT complète en 5 couches (Perception, Edge, Réseau, Cloud/VPS, Application) pour la supervision en temps réel de l'énergie électrique, de l'eau, du gaz, de l'air comprimé et de la température d'un site industriel.</p>
+      <div class="tag" data-i18n="feat_tag">PROJET DE FIN D'ÉTUDES · FÉV — JUIN 2026</div>
+      <h3 data-i18n="feat_title">Supervision énergétique IIoT d'un site industriel</h3>
+      <div class="sub" data-i18n="feat_sub">SOUSSCAMP & Laboratoire LASIME — Agadir</div>
+      <p data-i18n="feat_desc">Conception et déploiement d'une architecture IIoT complète en 5 couches (Perception, Edge, Réseau, Cloud/VPS, Application) pour la supervision en temps réel de l'énergie électrique, de l'eau, du gaz, de l'air comprimé et de la température d'un site industriel.</p>
       <ul>
-        <li>Acquisition des données via Modbus RTU (RS485) et GPIO sur une carte CrowPanel ESP32-S3</li>
-        <li>API REST développée avec FastAPI, hébergée sur un VPS Contabo, données stockées dans InfluxDB 2.7 sous Docker</li>
-        <li>Tableau de bord web de 6 pages fonctionnelles pour la visualisation temps réel et historique</li>
-        <li>Système d'alarmes avec notifications automatiques via un bot Telegram</li>
+        <li data-i18n="feat_li1">Acquisition des données via Modbus RTU (RS485) et GPIO sur une carte CrowPanel ESP32-S3</li>
+        <li data-i18n="feat_li2">API REST développée avec FastAPI, hébergée sur un VPS Contabo, données stockées dans InfluxDB 2.7 sous Docker</li>
+        <li data-i18n="feat_li3">Tableau de bord web de 6 pages fonctionnelles pour la visualisation temps réel et historique</li>
+        <li data-i18n="feat_li4">Système d'alarmes avec notifications automatiques via un bot Telegram</li>
       </ul>
       <div class="stack"><span class="chip">ESP32-S3</span><span class="chip">FastAPI</span><span class="chip">Docker</span><span class="chip">InfluxDB</span><span class="chip">Modbus RTU</span><span class="chip">Telegram Bot</span></div>
-      <div class="cta-row"><a class="btn ghost" href="https://github.com/AsmaAml/sousscamp_energy_supervision" target="_blank" rel="noopener">Voir le code sur GitHub</a></div>
+      <div class="cta-row"><a class="btn ghost" href="https://github.com/AsmaAml/sousscamp_energy_supervision" target="_blank" rel="noopener" data-i18n="btn_view_code">Voir le code sur GitHub</a></div>
     </div>
 
     <div class="grid">
-      <div class="card"><div class="date">NOV — DÉC 2024</div><h3>Détection des chutes par ML embarqué</h3><p>Système embarqué intelligent de détection de chutes à partir d'un capteur MPU6050 et d'algorithmes de machine learning.</p><div class="stack"><span class="chip">MPU6050</span><span class="chip">Machine Learning</span></div></div>
-      <div class="card"><div class="date">AVRIL — JUIN 2025</div><h3>Contrôle d'accès par reconnaissance faciale</h3><p>Système de sécurité par reconnaissance faciale avec communication via le protocole RPC.</p><div class="stack"><span class="chip">OpenCV</span><span class="chip">RPC</span></div></div>
-      <div class="card"><div class="date">MAI — JUIN 2025</div><h3>Projet décisionnel complet</h3><p>Data Warehouse (R-OLAP), flux ETL avec Talend, analyse SQL Server et dashboards Power BI.</p><div class="stack"><span class="chip">Talend</span><span class="chip">Power BI</span></div></div>
-      <div class="card"><div class="date">OCTOBRE 2025</div><h3>Surveillance de la qualité de l'air</h3><p>Collecte IoT de données environnementales, Big Data et détection d'anomalies par ML sur un tableau de bord interactif.</p><div class="stack"><span class="chip">IoT</span><span class="chip">Big Data</span></div></div>
-      <div class="card"><div class="date">OCT — NOV 2025</div><h3>Surveillance épidémiologique connectée</h3><p>Système IoT ESP32 en ESP-NOW pour la détection de proximité et l'affichage d'alertes en temps réel.</p><div class="stack"><span class="chip">ESP32</span><span class="chip">ESP-NOW</span></div></div>
-      <div class="card"><div class="date">OCTOBRE 2025</div><h3>Robot suiveur de ligne autonome</h3><p>Robot Arduino Uno avec capteurs infrarouges et module L293D, suivi de trajectoire précis.</p><div class="stack"><span class="chip">Arduino</span><span class="chip">Capteurs IR</span></div></div>
+      <div class="card"><div class="date" data-i18n="c1_date">NOV — DÉC 2024</div><h3 data-i18n="c1_title">Détection des chutes par ML embarqué</h3><p data-i18n="c1_desc">Système embarqué intelligent de détection de chutes à partir d'un capteur MPU6050 et d'algorithmes de machine learning.</p><div class="stack"><span class="chip">MPU6050</span><span class="chip">Machine Learning</span></div></div>
+      <div class="card"><div class="date" data-i18n="c2_date">AVRIL — JUIN 2025</div><h3 data-i18n="c2_title">Contrôle d'accès par reconnaissance faciale</h3><p data-i18n="c2_desc">Système de sécurité par reconnaissance faciale avec communication via le protocole RPC.</p><div class="stack"><span class="chip">OpenCV</span><span class="chip">RPC</span></div></div>
+      <div class="card"><div class="date" data-i18n="c3_date">MAI — JUIN 2025</div><h3 data-i18n="c3_title">Projet décisionnel complet</h3><p data-i18n="c3_desc">Data Warehouse (R-OLAP), flux ETL avec Talend, analyse SQL Server et dashboards Power BI.</p><div class="stack"><span class="chip">Talend</span><span class="chip">Power BI</span></div></div>
+      <div class="card"><div class="date" data-i18n="c4_date">OCTOBRE 2025</div><h3 data-i18n="c4_title">Surveillance de la qualité de l'air</h3><p data-i18n="c4_desc">Collecte IoT de données environnementales, Big Data et détection d'anomalies par ML sur un tableau de bord interactif.</p><div class="stack"><span class="chip">IoT</span><span class="chip">Big Data</span></div></div>
+      <div class="card"><div class="date" data-i18n="c5_date">OCT — NOV 2025</div><h3 data-i18n="c5_title">Surveillance épidémiologique connectée</h3><p data-i18n="c5_desc">Système IoT ESP32 en ESP-NOW pour la détection de proximité et l'affichage d'alertes en temps réel.</p><div class="stack"><span class="chip">ESP32</span><span class="chip">ESP-NOW</span></div></div>
+      <div class="card"><div class="date" data-i18n="c6_date">OCTOBRE 2025</div><h3 data-i18n="c6_title">Robot suiveur de ligne autonome</h3><p data-i18n="c6_desc">Robot Arduino Uno avec capteurs infrarouges et module L293D, suivi de trajectoire précis.</p><div class="stack"><span class="chip">Arduino</span><span class="chip">Capteurs IR</span></div></div>
     </div>
   </div>
 </section>
 
 <section id="experience">
   <div class="wrap reveal">
-    <div class="section-head"><div class="eyebrow">Parcours</div><h2>Expérience professionnelle</h2></div>
-    <div class="xp-item"><div class="when">FÉV — JUIN 2026</div><div><h3>Projet de Fin d'Études</h3><div class="org">SOUSSCAMP & Laboratoire LASIME, Agadir</div><p>Conception et déploiement de bout en bout d'une solution IIoT de suivi de consommation énergétique d'un site industriel.</p></div></div>
-    <div class="xp-item"><div class="when">AVRIL — JUIN 2023</div><div><h3>Stage de Fin d'Études</h3><div class="org">Leansoft, Agadir</div><p>Conception et développement d'un site e-commerce avec Django : gestion des produits, du stock et du processus de commande.</p></div></div>
-    <div class="xp-item"><div class="when">JUILLET 2022</div><div><h3>Stage d'Initiation</h3><div class="org">Leansoft, Agadir</div><p>Résolution de bugs sur le site web de l'entreprise et création d'un site avec la plateforme Odoo.</p></div></div>
+    <div class="section-head"><div class="eyebrow" data-i18n="xp_eyebrow">Parcours</div><h2 data-i18n="xp_title">Expérience professionnelle</h2></div>
+    <div class="xp-item"><div class="when" data-i18n="xp1_when">FÉV — JUIN 2026</div><div><h3 data-i18n="xp1_title">Projet de Fin d'Études</h3><div class="org">SOUSSCAMP & Laboratoire LASIME, Agadir</div><p data-i18n="xp1_desc">Conception et déploiement de bout en bout d'une solution IIoT de suivi de consommation énergétique d'un site industriel.</p></div></div>
+    <div class="xp-item"><div class="when" data-i18n="xp2_when">AVRIL — JUIN 2023</div><div><h3 data-i18n="xp2_title">Stage de Fin d'Études</h3><div class="org">Leansoft, Agadir</div><p data-i18n="xp2_desc">Conception et développement d'un site e-commerce avec Django : gestion des produits, du stock et du processus de commande.</p></div></div>
+    <div class="xp-item"><div class="when" data-i18n="xp3_when">JUILLET 2022</div><div><h3 data-i18n="xp3_title">Stage d'Initiation</h3><div class="org">Leansoft, Agadir</div><p data-i18n="xp3_desc">Résolution de bugs sur le site web de l'entreprise et création d'un site avec la plateforme Odoo.</p></div></div>
   </div>
 </section>
 
 <section id="formation">
   <div class="wrap reveal">
-    <div class="section-head"><div class="eyebrow">Formation</div><h2>Diplômes</h2></div>
-    <div class="edu-item"><div><h3>Master d'Excellence en Ingénierie Informatique et Systèmes Embarqués</h3><div class="org">Centre d'Excellence IT FSA, Université Ibn Zohr, Agadir</div></div><div class="when">2024–2026</div></div>
-    <div class="edu-item"><div><h3>Licence d'Excellence en Ingénierie Informatique et Systèmes Embarqués</h3><div class="org">Centre d'Excellence IT FSA, Université Ibn Zohr, Agadir</div></div><div class="when">2023–2024</div></div>
-    <div class="edu-item"><div><h3>DUT Génie Informatique</h3><div class="org">École Supérieure de Technologie, Agadir</div></div><div class="when">2021–2023</div></div>
-    <div class="edu-item"><div><h3>Baccalauréat, Sciences Physiques</h3><div class="org">Lycée El Hadj El Habib, Ait Melloul</div></div><div class="when">2019–2020</div></div>
+    <div class="section-head"><div class="eyebrow" data-i18n="edu_eyebrow">Formation</div><h2 data-i18n="edu_title">Diplômes</h2></div>
+    <div class="edu-item"><div><h3 data-i18n="edu1_title">Master d'Excellence en Ingénierie Informatique et Systèmes Embarqués</h3><div class="org">Centre d'Excellence IT FSA, Université Ibn Zohr, Agadir</div></div><div class="when">2024–2026</div></div>
+    <div class="edu-item"><div><h3 data-i18n="edu2_title">Licence d'Excellence en Ingénierie Informatique et Systèmes Embarqués</h3><div class="org">Centre d'Excellence IT FSA, Université Ibn Zohr, Agadir</div></div><div class="when">2023–2024</div></div>
+    <div class="edu-item"><div><h3 data-i18n="edu3_title">DUT Génie Informatique</h3><div class="org" data-i18n="edu3_org">École Supérieure de Technologie, Agadir</div></div><div class="when">2021–2023</div></div>
+    <div class="edu-item"><div><h3 data-i18n="edu4_title">Baccalauréat, Sciences Physiques</h3><div class="org">Lycée El Hadj El Habib, Ait Melloul</div></div><div class="when">2019–2020</div></div>
   </div>
 </section>
 
 <footer id="contact">
   <div class="wrap reveal">
     <div class="contact-box">
-      <h2>Discutons de votre prochain projet.</h2>
-      <p>Disponible pour des opportunités en IoT, systèmes embarqués, développement full stack et data. Réponse rapide par e-mail ou LinkedIn.</p>
+      <h2 data-i18n="contact_title">Discutons de votre prochain projet.</h2>
+      <p data-i18n="contact_desc">Disponible pour des opportunités en IoT, systèmes embarqués, développement full stack et data. Réponse rapide par e-mail ou LinkedIn.</p>
       <div class="contact-links">
         <a class="btn primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=assmaamlal141@gmail.com" target="_blank" rel="noopener">assmaamlal141@gmail.com</a>
         <a class="btn ghost" href="tel:+212628601582">+212 628 601 582</a>
@@ -260,17 +262,79 @@
         <a class="btn ghost" href="https://github.com/AsmaAml" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
-    <div class="foot-note"><span>Asma AMLAL — Agadir, Maroc</span><span>Arabe (maternelle) · Français (courant) · Anglais (technique)</span></div>
+    <div class="foot-note"><span>Asma AMLAL — Agadir, Maroc</span><span data-i18n="foot_langs">Arabe (maternelle) · Français (courant) · Anglais (technique)</span></div>
   </div>
 </footer>
 
 <script>
+  var i18n = {
+    nav_about:{fr:"À propos",en:"About"}, nav_skills:{fr:"Compétences",en:"Skills"}, nav_projects:{fr:"Projets",en:"Projects"}, nav_experience:{fr:"Expérience",en:"Experience"}, nav_contact:{fr:"Contact",en:"Contact"},
+    kicker:{fr:"Ingénieure Informatique — Agadir, Maroc",en:"Computer Engineer — Agadir, Morocco"},
+    hero_title:{fr:"Du capteur à l'interface, je construis des systèmes complets.",en:"From sensor to interface, I build complete systems."},
+    hero_role:{fr:"Systèmes embarqués, IoT industriel, développement full stack et IA — j'aime les projets qui traversent toute la chaîne technique, du microcontrôleur au tableau de bord.",en:"Embedded systems, industrial IoT, full stack development and AI — I enjoy projects that span the whole technical chain, from microcontroller to dashboard."},
+    badge_iot:{fr:"IoT",en:"IoT"}, badge_embedded:{fr:"Systèmes embarqués",en:"Embedded Systems"}, badge_ai:{fr:"Intelligence Artificielle",en:"Artificial Intelligence"}, badge_fullstack:{fr:"Full Stack",en:"Full Stack"},
+    btn_view_projects:{fr:"Voir les projets",en:"View projects"}, btn_download_cv:{fr:"Télécharger mon CV",en:"Download my CV"}, btn_contact:{fr:"Me contacter",en:"Contact me"},
+    about_eyebrow:{fr:"À propos",en:"About"}, about_title:{fr:"Une ingénieure qui aime le bout en bout",en:"An engineer who loves end-to-end work"},
+    about_text:{fr:"Diplômée d'un Master d'Excellence en Ingénierie Informatique et Systèmes Embarqués, j'ai une expertise polyvalente : matériel (capteurs, microcontrôleurs, protocoles industriels), développement logiciel (full stack, API REST, bases de données) et analyse de données (IA, Machine Learning, Big Data, tableaux de bord décisionnels). Mes stages et projets, du site e-commerce sous Django à une architecture IIoT complète déployée en production, m'ont donné une expérience concrète de bout en bout. Rigoureuse, autonome et curieuse, je veux mettre cette polyvalence au service de projets innovants en IoT, IA et systèmes industriels.",en:"A graduate of an Excellence Master's in Computer Engineering and Embedded Systems, I have well-rounded expertise: hardware (sensors, microcontrollers, industrial protocols), software development (full stack, REST APIs, databases), and data analysis (AI, Machine Learning, Big Data, decision-making dashboards). My internships and projects, from an e-commerce site built with Django to a complete IIoT architecture deployed in production, gave me hands-on end-to-end experience. Rigorous, autonomous and curious, I want to put this versatility to work on innovative projects in IoT, AI and industrial systems."},
+    domain_iot_t:{fr:"IoT",en:"IoT"}, domain_iot_d:{fr:"Capteurs, acquisition et transmission de données terrain",en:"Sensors, field data acquisition and transmission"},
+    domain_emb_t:{fr:"Embarqué",en:"Embedded"}, domain_emb_d:{fr:"ESP32, Arduino, protocoles industriels temps réel",en:"ESP32, Arduino, real-time industrial protocols"},
+    domain_ai_t:{fr:"IA & Data",en:"AI & Data"}, domain_ai_d:{fr:"Machine Learning, Big Data, tableaux de bord décisionnels",en:"Machine Learning, Big Data, decision-making dashboards"},
+    domain_fs_t:{fr:"Full Stack",en:"Full Stack"}, domain_fs_d:{fr:"API REST, bases de données, interfaces web complètes",en:"REST APIs, databases, complete web interfaces"},
+    skills_eyebrow:{fr:"Compétences",en:"Skills"}, skills_title:{fr:"Boîte à outils technique",en:"Technical toolkit"},
+    grp_lang:{fr:"Langages",en:"Languages"}, grp_web:{fr:"Développement web",en:"Web development"}, grp_emb:{fr:"Embarqué & protocoles",en:"Embedded & protocols"}, grp_data:{fr:"Data & IA",en:"Data & AI"}, grp_devops:{fr:"DevOps & outils",en:"DevOps & tools"},
+    projects_eyebrow:{fr:"Projets",en:"Projects"}, projects_title:{fr:"Réalisations",en:"Selected work"},
+    feat_tag:{fr:"PROJET DE FIN D'ÉTUDES · FÉV — JUIN 2026",en:"GRADUATION PROJECT · FEB — JUN 2026"},
+    feat_title:{fr:"Supervision énergétique IIoT d'un site industriel",en:"IIoT energy monitoring for an industrial site"},
+    feat_sub:{fr:"SOUSSCAMP & Laboratoire LASIME — Agadir",en:"SOUSSCAMP & LASIME Laboratory — Agadir"},
+    feat_desc:{fr:"Conception et déploiement d'une architecture IIoT complète en 5 couches (Perception, Edge, Réseau, Cloud/VPS, Application) pour la supervision en temps réel de l'énergie électrique, de l'eau, du gaz, de l'air comprimé et de la température d'un site industriel.",en:"Design and deployment of a complete 5-layer IIoT architecture (Perception, Edge, Network, Cloud/VPS, Application) for real-time monitoring of electricity, water, gas, compressed air and temperature on an industrial site."},
+    feat_li1:{fr:"Acquisition des données via Modbus RTU (RS485) et GPIO sur une carte CrowPanel ESP32-S3",en:"Data acquisition via Modbus RTU (RS485) and GPIO on a CrowPanel ESP32-S3 board"},
+    feat_li2:{fr:"API REST développée avec FastAPI, hébergée sur un VPS Contabo, données stockées dans InfluxDB 2.7 sous Docker",en:"REST API built with FastAPI, hosted on a Contabo VPS, data stored in InfluxDB 2.7 under Docker"},
+    feat_li3:{fr:"Tableau de bord web de 6 pages fonctionnelles pour la visualisation temps réel et historique",en:"6-page web dashboard for real-time and historical data visualization"},
+    feat_li4:{fr:"Système d'alarmes avec notifications automatiques via un bot Telegram",en:"Alarm system with automatic notifications via a Telegram bot"},
+    btn_view_code:{fr:"Voir le code sur GitHub",en:"View code on GitHub"},
+    c1_date:{fr:"NOV — DÉC 2024",en:"NOV — DEC 2024"}, c1_title:{fr:"Détection des chutes par ML embarqué",en:"Fall detection with embedded ML"}, c1_desc:{fr:"Système embarqué intelligent de détection de chutes à partir d'un capteur MPU6050 et d'algorithmes de machine learning.",en:"Smart embedded fall-detection system using an MPU6050 sensor and machine learning algorithms."},
+    c2_date:{fr:"AVRIL — JUIN 2025",en:"APR — JUN 2025"}, c2_title:{fr:"Contrôle d'accès par reconnaissance faciale",en:"Facial recognition access control"}, c2_desc:{fr:"Système de sécurité par reconnaissance faciale avec communication via le protocole RPC.",en:"Facial-recognition security system with communication over the RPC protocol."},
+    c3_date:{fr:"MAI — JUIN 2025",en:"MAY — JUN 2025"}, c3_title:{fr:"Projet décisionnel complet",en:"Complete BI project"}, c3_desc:{fr:"Data Warehouse (R-OLAP), flux ETL avec Talend, analyse SQL Server et dashboards Power BI.",en:"Data Warehouse (R-OLAP), ETL flows with Talend, SQL Server analysis and Power BI dashboards."},
+    c4_date:{fr:"OCTOBRE 2025",en:"OCTOBER 2025"}, c4_title:{fr:"Surveillance de la qualité de l'air",en:"Air quality monitoring"}, c4_desc:{fr:"Collecte IoT de données environnementales, Big Data et détection d'anomalies par ML sur un tableau de bord interactif.",en:"IoT environmental data collection, Big Data processing and ML anomaly detection on an interactive dashboard."},
+    c5_date:{fr:"OCT — NOV 2025",en:"OCT — NOV 2025"}, c5_title:{fr:"Surveillance épidémiologique connectée",en:"Connected epidemiological monitoring"}, c5_desc:{fr:"Système IoT ESP32 en ESP-NOW pour la détection de proximité et l'affichage d'alertes en temps réel.",en:"ESP32 IoT system over ESP-NOW for proximity detection and real-time alert display."},
+    c6_date:{fr:"OCTOBRE 2025",en:"OCTOBER 2025"}, c6_title:{fr:"Robot suiveur de ligne autonome",en:"Autonomous line-following robot"}, c6_desc:{fr:"Robot Arduino Uno avec capteurs infrarouges et module L293D, suivi de trajectoire précis.",en:"Arduino Uno robot with infrared sensors and an L293D module, precise trajectory tracking."},
+    xp_eyebrow:{fr:"Parcours",en:"Background"}, xp_title:{fr:"Expérience professionnelle",en:"Professional experience"},
+    xp1_when:{fr:"FÉV — JUIN 2026",en:"FEB — JUN 2026"}, xp1_title:{fr:"Projet de Fin d'Études",en:"Graduation Project"}, xp1_desc:{fr:"Conception et déploiement de bout en bout d'une solution IIoT de suivi de consommation énergétique d'un site industriel.",en:"End-to-end design and deployment of an IIoT solution for tracking energy consumption on an industrial site."},
+    xp2_when:{fr:"AVRIL — JUIN 2023",en:"APR — JUN 2023"}, xp2_title:{fr:"Stage de Fin d'Études",en:"Graduation Internship"}, xp2_desc:{fr:"Conception et développement d'un site e-commerce avec Django : gestion des produits, du stock et du processus de commande.",en:"Design and development of an e-commerce site with Django: product, stock and order-process management."},
+    xp3_when:{fr:"JUILLET 2022",en:"JULY 2022"}, xp3_title:{fr:"Stage d'Initiation",en:"Introductory Internship"}, xp3_desc:{fr:"Résolution de bugs sur le site web de l'entreprise et création d'un site avec la plateforme Odoo.",en:"Bug fixing on the company website and building a site with the Odoo platform."},
+    edu_eyebrow:{fr:"Formation",en:"Education"}, edu_title:{fr:"Diplômes",en:"Degrees"},
+    edu1_title:{fr:"Master d'Excellence en Ingénierie Informatique et Systèmes Embarqués",en:"Excellence Master's in Computer Engineering and Embedded Systems"},
+    edu2_title:{fr:"Licence d'Excellence en Ingénierie Informatique et Systèmes Embarqués",en:"Excellence Bachelor's in Computer Engineering and Embedded Systems"},
+    edu3_title:{fr:"DUT Génie Informatique",en:"University Diploma in Computer Science (DUT)"},
+    edu3_org:{fr:"École Supérieure de Technologie, Agadir",en:"École Supérieure de Technologie, Agadir"},
+    edu4_title:{fr:"Baccalauréat, Sciences Physiques",en:"Baccalaureate, Physical Sciences"},
+    contact_title:{fr:"Discutons de votre prochain projet.",en:"Let's talk about your next project."},
+    contact_desc:{fr:"Disponible pour des opportunités en IoT, systèmes embarqués, développement full stack et data. Réponse rapide par e-mail ou LinkedIn.",en:"Available for opportunities in IoT, embedded systems, full stack development and data. Quick reply by email or LinkedIn."},
+    foot_langs:{fr:"Arabe (maternelle) · Français (courant) · Anglais (technique)",en:"Arabic (native) · French (fluent) · English (technical)"}
+  };
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var entry = i18n[el.getAttribute('data-i18n')];
+      if(entry && entry[lang]) el.textContent = entry[lang];
+    });
+    document.getElementById('langToggle').textContent = lang === 'fr' ? 'EN' : 'FR';
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+  }
+  (function(){
+    var saved = 'fr';
+    try{ saved = localStorage.getItem('lang') || 'fr'; }catch(e){}
+    setLang(saved);
+    document.getElementById('langToggle').addEventListener('click', function(){
+      setLang(document.documentElement.lang === 'fr' ? 'en' : 'fr');
+    });
+  })();
   (function(){
     var root = document.documentElement;
     var btn = document.getElementById('themeToggle');
     try{
-      var saved = localStorage.getItem('theme');
-      if(saved === 'dark'){ root.setAttribute('data-theme','dark'); btn.textContent = '☀️'; }
+      var savedTheme = localStorage.getItem('theme');
+      if(savedTheme === 'dark'){ root.setAttribute('data-theme','dark'); btn.textContent = '☀️'; }
     }catch(e){}
     btn.addEventListener('click', function(){
       var isDark = root.getAttribute('data-theme') === 'dark';
